@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "data": {
+    "id": "1abc",
+    "name": "Q3 Report.pdf",
+    "mimeType": "application/pdf",
+    "parents": ["0AbcFolder"],
+    "createdTime": "2026-01-15T10:00:00Z",
+    "modifiedTime": "2026-02-01T12:30:00Z",
+    "trashed": false,
+    "webViewLink": "https://drive.google.com/file/d/1abc/view",
+    "size": "204800"
+  }
+}

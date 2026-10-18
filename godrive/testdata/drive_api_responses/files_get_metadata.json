@@ -1,0 +1,12 @@
+{
+  "kind": "drive#file",
+  "id": "1abcQ3ReportId",
+  "name": "Q3 Report.pdf",
+  "mimeType": "application/pdf",
+  "parents": ["0AFolderRoot"],
+  "createdTime": "2026-07-01T09:00:00.000Z",
+  "modifiedTime": "2026-07-15T12:30:00.000Z",
+  "trashed": false,
+  "webViewLink": "https://drive.google.com/file/d/1abcQ3ReportId/view",
+  "size": "204800"
+}

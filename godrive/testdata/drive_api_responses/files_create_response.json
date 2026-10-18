@@ -1,0 +1,12 @@
+{
+  "kind": "drive#file",
+  "id": "4jklNewFileId",
+  "name": "notes.txt",
+  "mimeType": "text/plain",
+  "parents": ["0AFolderRoot"],
+  "createdTime": "2026-10-18T10:00:00.000Z",
+  "modifiedTime": "2026-10-18T10:00:00.000Z",
+  "trashed": false,
+  "webViewLink": "https://drive.google.com/file/d/4jklNewFileId/view",
+  "size": "13"
+}

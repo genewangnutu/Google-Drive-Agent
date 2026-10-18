@@ -1,0 +1,19 @@
+[
+  {"name": "title_contains", "mcp_query": "title contains 'report'", "expected_q": "name contains 'report'"},
+  {"name": "parent_equals",  "mcp_query": "parentId = '1234'",       "expected_q": "'1234' in parents"},
+  {"name": "owner_me",       "mcp_query": "owner = 'me'",            "expected_q": "'me' in owners"},
+  {"name": "title_equals",        "mcp_query": "title = 'Q3 Report'",                       "expected_q": "name = 'Q3 Report'"},
+  {"name": "title_not_equals",    "mcp_query": "title != 'draft'",                          "expected_q": "name != 'draft'"},
+  {"name": "fulltext_contains",   "mcp_query": "fullText contains 'invoice'",               "expected_q": "fullText contains 'invoice'"},
+  {"name": "mimetype_equals",     "mcp_query": "mimeType = 'application/pdf'",               "expected_q": "mimeType = 'application/pdf'"},
+  {"name": "mimetype_contains",   "mcp_query": "mimeType contains 'image/'",                 "expected_q": "mimeType contains 'image/'"},
+  {"name": "modifiedtime_gt",     "mcp_query": "modifiedTime > '2024-01-01T00:00:00'",       "expected_q": "modifiedTime > '2024-01-01T00:00:00'"},
+  {"name": "createdtime_lt",      "mcp_query": "createdTime < '2024-06-01T00:00:00'",        "expected_q": "createdTime < '2024-06-01T00:00:00'"},
+  {"name": "viewedbymetime_gte",  "mcp_query": "viewedByMeTime >= '2024-01-01T00:00:00'",     "expected_q": "viewedByMeTime >= '2024-01-01T00:00:00'"},
+  {"name": "owner_email",         "mcp_query": "owner = 'alice@example.com'",                "expected_q": "'alice@example.com' in owners"},
+  {"name": "sharedwithme_true",   "mcp_query": "sharedWithMe = true",                        "expected_q": "sharedWithMe = true"},
+  {"name": "starred_true",        "mcp_query": "starred = true",                             "expected_q": "starred = true"},
+  {"name": "trashed_false",       "mcp_query": "trashed = false",                            "expected_q": "trashed = false"},
+  {"name": "combined_and",        "mcp_query": "title contains 'invoice' and starred = true", "expected_q": "name contains 'invoice' and starred = true"},
+  {"name": "combined_or",         "mcp_query": "starred = true or sharedWithMe = true",       "expected_q": "starred = true or sharedWithMe = true"}
+]

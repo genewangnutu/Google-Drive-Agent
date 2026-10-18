@@ -1,0 +1,25 @@
+{
+  "kind": "drive#permissionList",
+  "permissions": [
+    {
+      "kind": "drive#permission",
+      "id": "ownerPermId",
+      "type": "user",
+      "role": "owner",
+      "emailAddress": "owner@example.com"
+    },
+    {
+      "kind": "drive#permission",
+      "id": "writerPermId",
+      "type": "user",
+      "role": "writer",
+      "emailAddress": "alice@example.com"
+    },
+    {
+      "kind": "drive#permission",
+      "id": "anyonePermId",
+      "type": "anyone",
+      "role": "reader"
+    }
+  ]
+}

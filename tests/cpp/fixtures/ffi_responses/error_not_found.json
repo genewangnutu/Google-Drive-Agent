@@ -1,0 +1,9 @@
+{
+  "ok": false,
+  "error": {
+    "code": "NOT_FOUND",
+    "http_status": 404,
+    "message": "file 1abc not found",
+    "retryable": false
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "access_token": "ya29.fake-access-token",
+  "refresh_token": "1//fake-refresh-token",
+  "expires_in": 3599,
+  "token_type": "Bearer",
+  "scope": "https://www.googleapis.com/auth/drive"
+}

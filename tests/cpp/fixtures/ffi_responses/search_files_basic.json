@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "data": {
+    "files": [
+      {"id": "1abc", "name": "Q3 Report.pdf", "mimeType": "application/pdf"},
+      {"id": "2def", "name": "Q3 Report - copy.pdf", "mimeType": "application/pdf"}
+    ],
+    "nextPageToken": null
+  }
+}
