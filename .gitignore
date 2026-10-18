@@ -22,3 +22,6 @@ client.json
 token.json
 **/token.json
 **/client.json
+
+# Implementation Plan should be ignored, as it is generated from the task list and should not be edited directly
+Doc/
