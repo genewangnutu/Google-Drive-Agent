@@ -78,12 +78,18 @@ side is pre-vendored into the repo today.)
 
 1. In [Google Cloud Console](https://console.cloud.google.com/): create or
    select a project, then enable the Drive API.
-2. Create an OAuth 2.0 Client ID of type **Desktop app**.
-3. Save the client ID/secret to `~/.config/google-drive-agent/client.json`:
-
-   ```json
-   {"client_id": "...", "client_secret": "..."}
-   ```
+2. Create an OAuth 2.0 Client ID of type **Desktop app** — this is the
+   client `gdrive-agent login` (the default, browser/loopback flow) uses.
+3. (Optional, only if you'll use `--device` — see [section 4](#4-login))
+   create a **second** OAuth 2.0 Client ID, this time of type **TVs and
+   Limited Input devices**. Google's device-code grant rejects a Desktop
+   app client with `invalid_client: "Invalid client type"`; the two flows
+   need two different client types, from two separate Client IDs.
+4. Copy [`client.json.example`](client.json.example) to
+   `~/.config/google-drive-agent/client.json` and fill in the Desktop app
+   client's `client_id`/`client_secret`. Only add `device_client_id`/
+   `device_client_secret` (from step 3's client) if you need `--device`;
+   leave them out otherwise.
 
 ## 4. Login
 
@@ -91,8 +97,11 @@ side is pre-vendored into the repo today.)
 gdrive-agent login
 ```
 
-On a headless machine with no browser, use `--device` for the device-code
-flow instead:
+On a headless machine with no browser — e.g. a remote server reached over
+SSH, where the default flow's `http://127.0.0.1:<port>/callback` loopback
+can't be reached from the browser you're actually using — use `--device`
+for the device-code flow instead (requires `device_client_id`/
+`device_client_secret` in `client.json`, see [section 3](#3-first-time-setup-google-cloud-oauth-client)):
 
 ```sh
 gdrive-agent login --device

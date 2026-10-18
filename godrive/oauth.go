@@ -36,6 +36,27 @@ var loginTimeout = 5 * time.Minute
 type ClientConfig struct {
 	ClientID     string `json:"client_id"`
 	ClientSecret string `json:"client_secret"`
+
+	// DeviceClientID/DeviceClientSecret are optional and only needed for
+	// `login --device`. Google's device-code grant rejects a "Desktop
+	// app" client with invalid_client: "Invalid client type" -- it
+	// requires a separate OAuth client of type "TVs and Limited Input
+	// devices". See client.json.example.
+	DeviceClientID     string `json:"device_client_id,omitempty"`
+	DeviceClientSecret string `json:"device_client_secret,omitempty"`
+}
+
+// deviceClientConfig resolves the OAuth client credentials for the
+// device-code flow, which must come from a different Google Cloud client
+// than ClientID/ClientSecret (see the field comment above).
+func (c *ClientConfig) deviceClientConfig() (*ClientConfig, error) {
+	if c.DeviceClientID == "" {
+		return nil, newAppError("INTERNAL", 0,
+			`client.json is missing device_client_id/device_client_secret; `+
+				`"login --device" needs a separate OAuth client of type `+
+				`"TVs and Limited Input devices" -- see README.md §3 and client.json.example`, false)
+	}
+	return &ClientConfig{ClientID: c.DeviceClientID, ClientSecret: c.DeviceClientSecret}, nil
 }
 
 // LoadClientConfig reads ~/.config/google-drive-agent/client.json. A
@@ -89,7 +110,11 @@ func Login(mode string) error {
 	}
 
 	if mode == "device" {
-		return loginDevice(cfg)
+		deviceCfg, err := cfg.deviceClientConfig()
+		if err != nil {
+			return err
+		}
+		return loginDevice(deviceCfg)
 	}
 	return loginBrowser(cfg)
 }

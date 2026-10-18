@@ -1,0 +1,7 @@
+{
+  "client_id": "YOUR-DESKTOP-APP-CLIENT-ID.apps.googleusercontent.com",
+  "client_secret": "YOUR-DESKTOP-APP-CLIENT-SECRET",
+
+  "device_client_id": "YOUR-TV-AND-LIMITED-INPUT-CLIENT-ID.apps.googleusercontent.com",
+  "device_client_secret": "YOUR-TV-AND-LIMITED-INPUT-CLIENT-SECRET"
+}
