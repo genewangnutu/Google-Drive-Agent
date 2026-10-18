@@ -145,10 +145,15 @@ func loginBrowser(cfg *ClientConfig) error {
 
 	authURL := oc.AuthCodeURL(state, oauth2.AccessTypeOffline, oauth2.S256ChallengeOption(verifier))
 
-	if openErr := exec.Command("xdg-open", authURL).Start(); openErr != nil {
-		fmt.Fprintln(os.Stderr, "Could not open a browser automatically. Open this URL to continue:")
-		fmt.Fprintln(os.Stderr, authURL)
-	}
+	// Always print the URL first, rather than only on a Start() error.
+	// xdg-open commonly EXISTS but still can't open anything (headless
+	// WSL/SSH sessions with no DISPLAY/browser registered) -- Start()
+	// only reports whether the process launched, not whether it actually
+	// opened a browser, so gating this message on its error leaves the
+	// terminal silent for minutes on exactly the machines that need it.
+	fmt.Fprintln(os.Stderr, "Open this URL in a browser to continue login:")
+	fmt.Fprintln(os.Stderr, authURL)
+	_ = exec.Command("xdg-open", authURL).Start()
 
 	var code string
 	select {
